@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hybrisconfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="resources/schemas/extensions.xsd">
+    <extensions>
+        <!--
+                All extensions located in ${HYBRIS_BIN_DIR}/platform/ext are automatically loaded.
+                More information about how to configure available extensions can be found here : https://wiki.hybris.com/x/nZVzC
+        -->
+
+        <path dir="${HYBRIS_BIN_DIR}"/>
+		<extension name='trainingcore'/>
+		<extension name='trainingbackoffice'/>
+		<extension name='trainingfacades'/>
+		<extension name='traininginitialdata'/>
+		<extension name='trainingfulfilmentprocess'/>
+		<extension name='trainingtest'/>
+		<extension name='trainingstorefront'/>
+		<extension name='sampleextension'/>
+        <extension name='adaptivesearchsolr'/>
+        <extension name='adaptivesearchbackoffice'/>
+        <extension name='adaptivesearchsamplesaddon'/>
+        <extension name='adaptivesearchwebservices'/>
+        <extension name='commerceservicesbackoffice'/>
+        <extension name='solrfacetsearchbackoffice'/>
+        <extension name='solrserver'/>
+        <extension name='electronicsstore'/>
+        <extension name='apparelstore'/>
+		<extension name="pcmbackoffice"/>
+		<extension name="cmsbackoffice"/>
+		<extension name="cmsoccaddon"/>
+		<extension name="cmswebservices"/>
+		<extension name="previewwebservices"/>
+		<!--<extension name="cmssmartedit"/>
+		<extension name="cmssmarteditwebservices"/>
+		<extension name="smartedit"/>
+		<extension name="smarteditwebservices"/>-->
+		<extension name="npmancillary"/>
+		<extension name='backoffice' />
+
+
+
+
+
+
+
+    </extensions>
+</hybrisconfig>
