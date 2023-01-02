@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<config xmlns="http://www.hybris.com/cockpit/config"
+		xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea"
+		xmlns:list-view="http://www.hybris.com/cockpitng/component/listView"
+		xmlns:advanced-search="http://www.hybris.com/cockpitng/config/advancedsearch"
+		xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms"
+		xmlns:dsb="http://www.hybris.com/cockpitng/config/dashboard"
+		xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree"
+		xmlns:grid-view="http://www.hybris.com/cockpitng/component/gridView"
+		xmlns:na="http://www.hybris.com/cockpitng/config/notifications"
+		xmlns:simple-search="http://www.hybris.com/cockpitng/config/simplesearch"
+		xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
+		xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+
+	<context merge-by="module" component="editorareaactions" type="Consignment">
+		<y:actions xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:group qualifier="common">
+				<y:label>actiongroup.common</y:label>				
+				<y:action action-id="org.training.backoffice.actions.confirmpickupaction" property="currentObject"/>				
+			</y:group>
+		</y:actions>
+    </context>
+
+	<!-- Notification Area-->
+	<context component="notification-area">
+	    <na:notification-area>	        
+	        <na:notifications eventType="trainingbackoffice.confirmpickup.event" level="SUCCESS">
+	            <na:message>hmc.action.confirmpickup.success</na:message>
+	        </na:notifications>
+	   </na:notification-area>
+	</context>
+
+	<context component="explorer-tree" module="trainingbackoffice" merge-by="module">
+		<n:explorer-tree xmlns:n="http://www.hybris.com/cockpitng/config/explorertree">
+			<n:navigation-node id="PITS">
+				<n:type-node code="PITUser" id="PITUser"/>
+				<n:type-node code="PITAddress" id="PITAddress"/>
+			</n:navigation-node>
+		</n:explorer-tree>
+	</context>
+	<context type="PITUser" component="listview" merge-by="type" parent="GenericItem">
+		<list-view:list-view>
+			<list-view:column qualifier="id" />
+			<list-view:column qualifier="name" />
+			<list-view:column qualifier="job_title" />
+		</list-view:list-view>
+	</context>
+	<context merge-by="type"  type="PITUser" component="editor-area">
+		<editorArea:editorArea>
+			<editorArea:tab name="hmc.tab.customer.common"
+							position="1">
+				<editorArea:section name="hmc.tab.customer.common">
+					<editorArea:attribute qualifier="id" />
+					<editorArea:attribute qualifier="name" />
+					<editorArea:attribute qualifier="job_title" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+	<context type="PITUser" component="advanced-search"
+			 merge-by="type" parent="GenericItem">
+		<advanced-search:advanced-search>
+			<advanced-search:field-list>
+				<advanced-search:field name="id" operator="equals" selected="true" />
+				<advanced-search:field name="name" operator="equals" selected="true" />
+				<advanced-search:field name="job_title" operator="equals" selected="true"/>
+			</advanced-search:field-list>
+		</advanced-search:advanced-search>
+	</context>
+	<context type="PITUser" component="simple-search" merge-by="type" parent="GenericItem">
+		<simple-search:simple-search>
+			<simple-search:field name="id" />
+		</simple-search:simple-search>
+	</context>
+
+	<context type="PITAddress" component="listview" merge-by="type" parent="GenericItem">
+		<list-view:list-view>
+			<list-view:column qualifier="line1" />
+			<list-view:column qualifier="line2" />
+			<list-view:column qualifier="city" />
+			<list-view:column qualifier="zipCode" />
+		</list-view:list-view>
+	</context>
+	<context merge-by="type"  type="PITAddress" component="editor-area">
+		<editorArea:editorArea>
+			<editorArea:tab name="hmc.tab.customer.common"
+							position="1">
+				<editorArea:section name="hmc.tab.customer.common">
+					<editorArea:attribute qualifier="line1" />
+					<editorArea:attribute qualifier="line2" />
+					<editorArea:attribute qualifier="city" />
+					<editorArea:attribute qualifier="zipCode" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+	<context type="PITAddress" component="advanced-search"
+			 merge-by="type" parent="GenericItem">
+		<advanced-search:advanced-search>
+			<advanced-search:field-list>
+				<advanced-search:field name="line1" operator="equals" selected="true" />
+				<advanced-search:field name="line2" operator="equals" selected="true"/>
+				<advanced-search:field name="city" operator="equals" selected="true"/>
+				<advanced-search:field name="zipCode" operator="equals" selected="true"/>
+			</advanced-search:field-list>
+		</advanced-search:advanced-search>
+	</context>
+	<context type="PITAddress" component="simple-search" merge-by="type" parent="GenericItem">
+		<simple-search:simple-search>
+			<simple-search:field name="city" />
+		</simple-search:simple-search>
+	</context>
+
+	<context type="PITUser" component="create-wizard">
+		<wz:flow id="pitUserWizard" title="create.title(ctx.TYPE_CODE)">
+			<wz:prepare id="pitUserPrepare">
+				<wz:initialize property="pitUser" type="ctx.TYPE_CODE"/>
+			</wz:prepare>
+			<wz:step id="step1">
+				<wz:content id="step1.content">
+					<wz:property-list root="pitUser">
+						<wz:property qualifier="id"/>
+						<wz:property qualifier="name"/>
+						<wz:property qualifier="job_title"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:done>
+						<wz:save property="pitUser"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+
+		</wz:flow>
+	</context>
+
+	<context type="PITAddress" component="create-wizard">
+		<wz:flow id="pitAddressWizard" title="create.title(ctx.TYPE_CODE)">
+			<wz:prepare id="pitAddressPrepare">
+				<wz:initialize property="pitAddress" type="ctx.TYPE_CODE"/>
+			</wz:prepare>
+			<wz:step id="step1">
+				<wz:content id="step1.content">
+					<wz:property-list root="pitAddress">
+						<wz:property qualifier="line1"/>
+						<wz:property qualifier="line2"/>
+						<wz:property qualifier="city"/>
+						<wz:property qualifier="zipCode"/>
+						<wz:property qualifier="user"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:done>
+						<wz:save property="pitAddress"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+
+		</wz:flow>
+	</context>
+
+</config>
