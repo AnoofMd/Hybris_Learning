@@ -12,4 +12,9 @@
 		<property name="code" type="String"/>
 		<property name="name" type="String"/>
 	</bean>
+	<bean class="org.training.facades.product.data.PITUserData">
+		<property name="id" type="Integer"/>
+		<property name="name" type="String"/>
+		<property name="job_title" type="String"/>
+	</bean>
 </beans>

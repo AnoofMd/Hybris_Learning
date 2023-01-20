@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26-Dec-2022, 3:06:12 pm                     ---
+ * --- Generated at 19-Jan-2023, 4:33:45 pm                     ---
  * ----------------------------------------------------------------
  */
 package sample.webservice.constants;

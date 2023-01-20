@@ -1610,4 +1610,16 @@
         </property>
     </bean>
 
+    <bean parent="fieldSetLevelMapping" id="pitUserDataWSDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="org.training.facades.product.data.PITUserDataWSDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="id,name,job_title"/>
+                <entry key="DEFAULT" value="id,name,job_title"/>
+                <entry key="FULL" value="id,name,job_title"/>
+            </map>
+        </property>
+    </bean>
+
 </beans>

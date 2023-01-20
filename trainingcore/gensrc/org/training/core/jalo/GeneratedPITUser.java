@@ -1,17 +1,14 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 04-Jan-2023, 6:23:22 pm                     ---
+ * --- Generated at 19-Jan-2023, 4:33:45 pm                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
 
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item.AttributeMode;
-import de.hybris.platform.jalo.JaloInvalidParameterException;
 import de.hybris.platform.jalo.SessionContext;
-import de.hybris.platform.jalo.c2l.C2LManager;
-import de.hybris.platform.jalo.c2l.Language;
 import de.hybris.platform.jalo.type.CollectionType;
 import de.hybris.platform.util.OneToManyHandler;
 import java.util.Collection;
@@ -140,11 +137,7 @@ public abstract class GeneratedPITUser extends GenericItem
 	 */
 	public Integer getId(final SessionContext ctx)
 	{
-		if( ctx == null || ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedPITUser.getId requires a session language", 0 );
-		}
-		return (Integer)getLocalizedProperty( ctx, ID);
+		return (Integer)getProperty( ctx, ID);
 	}
 	
 	/**
@@ -176,38 +169,12 @@ public abstract class GeneratedPITUser extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>PITUser.id</code> attribute. 
-	 * @return the localized id - PIT ID of the User.
-	 */
-	public Map<Language,Integer> getAllId(final SessionContext ctx)
-	{
-		return (Map<Language,Integer>)getAllLocalizedProperties(ctx,ID,C2LManager.getInstance().getAllLanguages());
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>PITUser.id</code> attribute. 
-	 * @return the localized id - PIT ID of the User.
-	 */
-	public Map<Language,Integer> getAllId()
-	{
-		return getAllId( getSession().getSessionContext() );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Setter of the <code>PITUser.id</code> attribute. 
 	 * @param value the id - PIT ID of the User.
 	 */
 	public void setId(final SessionContext ctx, final Integer value)
 	{
-		if ( ctx == null) 
-		{
-			throw new JaloInvalidParameterException( "ctx is null", 0 );
-		}
-		if( ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedPITUser.setId requires a session language", 0 );
-		}
-		setLocalizedProperty(ctx, ID,value);
+		setProperty(ctx, ID,value);
 	}
 	
 	/**
@@ -238,34 +205,12 @@ public abstract class GeneratedPITUser extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>PITUser.id</code> attribute. 
-	 * @param value the id - PIT ID of the User.
-	 */
-	public void setAllId(final SessionContext ctx, final Map<Language,Integer> value)
-	{
-		setAllLocalizedProperties(ctx,ID,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>PITUser.id</code> attribute. 
-	 * @param value the id - PIT ID of the User.
-	 */
-	public void setAllId(final Map<Language,Integer> value)
-	{
-		setAllId( getSession().getSessionContext(), value );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Getter of the <code>PITUser.job_title</code> attribute.
 	 * @return the job_title - Job Title of the user.
 	 */
 	public String getJob_title(final SessionContext ctx)
 	{
-		if( ctx == null || ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedPITUser.getJob_title requires a session language", 0 );
-		}
-		return (String)getLocalizedProperty( ctx, JOB_TITLE);
+		return (String)getProperty( ctx, JOB_TITLE);
 	}
 	
 	/**
@@ -278,38 +223,12 @@ public abstract class GeneratedPITUser extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>PITUser.job_title</code> attribute. 
-	 * @return the localized job_title - Job Title of the user.
-	 */
-	public Map<Language,String> getAllJob_title(final SessionContext ctx)
-	{
-		return (Map<Language,String>)getAllLocalizedProperties(ctx,JOB_TITLE,C2LManager.getInstance().getAllLanguages());
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>PITUser.job_title</code> attribute. 
-	 * @return the localized job_title - Job Title of the user.
-	 */
-	public Map<Language,String> getAllJob_title()
-	{
-		return getAllJob_title( getSession().getSessionContext() );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Setter of the <code>PITUser.job_title</code> attribute. 
 	 * @param value the job_title - Job Title of the user.
 	 */
 	public void setJob_title(final SessionContext ctx, final String value)
 	{
-		if ( ctx == null) 
-		{
-			throw new JaloInvalidParameterException( "ctx is null", 0 );
-		}
-		if( ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedPITUser.setJob_title requires a session language", 0 );
-		}
-		setLocalizedProperty(ctx, JOB_TITLE,value);
+		setProperty(ctx, JOB_TITLE,value);
 	}
 	
 	/**
@@ -322,34 +241,12 @@ public abstract class GeneratedPITUser extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>PITUser.job_title</code> attribute. 
-	 * @param value the job_title - Job Title of the user.
-	 */
-	public void setAllJob_title(final SessionContext ctx, final Map<Language,String> value)
-	{
-		setAllLocalizedProperties(ctx,JOB_TITLE,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>PITUser.job_title</code> attribute. 
-	 * @param value the job_title - Job Title of the user.
-	 */
-	public void setAllJob_title(final Map<Language,String> value)
-	{
-		setAllJob_title( getSession().getSessionContext(), value );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Getter of the <code>PITUser.name</code> attribute.
 	 * @return the name - Name of the User.
 	 */
 	public String getName(final SessionContext ctx)
 	{
-		if( ctx == null || ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedPITUser.getName requires a session language", 0 );
-		}
-		return (String)getLocalizedProperty( ctx, NAME);
+		return (String)getProperty( ctx, NAME);
 	}
 	
 	/**
@@ -362,38 +259,12 @@ public abstract class GeneratedPITUser extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>PITUser.name</code> attribute. 
-	 * @return the localized name - Name of the User.
-	 */
-	public Map<Language,String> getAllName(final SessionContext ctx)
-	{
-		return (Map<Language,String>)getAllLocalizedProperties(ctx,NAME,C2LManager.getInstance().getAllLanguages());
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>PITUser.name</code> attribute. 
-	 * @return the localized name - Name of the User.
-	 */
-	public Map<Language,String> getAllName()
-	{
-		return getAllName( getSession().getSessionContext() );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Setter of the <code>PITUser.name</code> attribute. 
 	 * @param value the name - Name of the User.
 	 */
 	public void setName(final SessionContext ctx, final String value)
 	{
-		if ( ctx == null) 
-		{
-			throw new JaloInvalidParameterException( "ctx is null", 0 );
-		}
-		if( ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedPITUser.setName requires a session language", 0 );
-		}
-		setLocalizedProperty(ctx, NAME,value);
+		setProperty(ctx, NAME,value);
 	}
 	
 	/**
@@ -403,24 +274,6 @@ public abstract class GeneratedPITUser extends GenericItem
 	public void setName(final String value)
 	{
 		setName( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>PITUser.name</code> attribute. 
-	 * @param value the name - Name of the User.
-	 */
-	public void setAllName(final SessionContext ctx, final Map<Language,String> value)
-	{
-		setAllLocalizedProperties(ctx,NAME,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>PITUser.name</code> attribute. 
-	 * @param value the name - Name of the User.
-	 */
-	public void setAllName(final Map<Language,String> value)
-	{
-		setAllName( getSession().getSessionContext(), value );
 	}
 	
 }

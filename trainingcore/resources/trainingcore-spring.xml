@@ -540,4 +540,11 @@
 	</bean>
 	<bean id="myJobPerformable" class="org.training.core.job.MyJobPerformable"
 		  parent="abstractJobPerformable"/>
+	<alias alias="pitUserDao" name="pitUserDaoImpl"/>
+	<bean id="pitUserDaoImpl"
+		  class="org.training.core.dao.impl.PITUserDaoImpl" >
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="modelService" ref="modelService"/>
+	</bean>
+	<bean id="pitUserService" class="org.training.core.service.impl.PITUserServiceImpl" ></bean>
 </beans>

@@ -257,4 +257,11 @@
 			</map>
 		</property>
 	</bean>
+
+	<bean id="pitUserFieldMapper" parent="fieldMapper">
+		<property name="sourceClass"
+				  value="org.training.facades.product.data.PITUserData"/>
+		<property name="destClass"
+				  value="org.training.facades.product.data.PITUserDataWSDTO"/>
+	</bean>
 </beans>

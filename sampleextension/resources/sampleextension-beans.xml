@@ -183,4 +183,26 @@
 		<property name="pagination" type="de.hybris.platform.commerceservices.search.pagedata.PaginationData"/>
 	</bean>
 
+	<bean class="org.training.facades.product.data.PITUserDataWSDTO">
+
+		<property name="id" type="Integer"/>
+		<property name="name" type="String"/>
+		<property name="job_title" type="String"/>
+
+	</bean>
+
+	<!-- <bean class="de.hybris.platform.commercewebservicescommons.dto.hybrisTubeStores.HybrisTubeStoresDataListWSDTO">
+    <property name="hybrisTubeStores" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.hybrisTubeStores.HybrisTubeStoresDataWSDTO"></property>
+    </bean> -->
+
+	<bean class="org.training.facades.product.data.PITUserDataListWSDTO">
+		<property name="pitUser"
+				  type="java.util.List&lt;org.training.facades.product.data.PITUserDataWSDTO>"/>
+	</bean>
+
+	<bean class="sample.webservice.queues.data.PITUserDataList">
+		<property name="pitUser"
+				  type="java.util.List&lt;org.training.facades.product.data.PITUserData>"/>
+	</bean>
+
 </beans>

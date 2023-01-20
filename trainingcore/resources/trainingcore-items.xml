@@ -130,17 +130,17 @@
                 <description>A PIT User.</description>
                 <deployment table="PITUser" typecode="31001"/>
                 <attributes>
-                    <attribute qualifier="id" type="localized:java.lang.Integer">
+                    <attribute qualifier="id" type="java.lang.Integer">
                         <description>PIT ID of the User.</description>
-                        <modifiers/>
+                        <modifiers optional="false" unique="true" initial="true"/>
                         <persistence type="property"/>
                     </attribute>
-                    <attribute qualifier="name" type="localized:java.lang.String">
+                    <attribute qualifier="name" type="java.lang.String">
                         <description>Name of the User.</description>
                         <modifiers/>
                         <persistence type="property"/>
                     </attribute>
-                    <attribute qualifier="job_title" type="localized:java.lang.String">
+                    <attribute qualifier="job_title" type="java.lang.String">
                         <description>Job Title of the user.</description>
                         <modifiers/>
                         <persistence type="property"/>
@@ -153,22 +153,27 @@
                 </description>
                 <deployment table="PITAddress" typecode="31002"/>
                 <attributes>
-                    <attribute qualifier="line1" type="localized:java.lang.String">
+                    <attribute qualifier="addressId" type="java.lang.Integer">
+                        <description>Address ID of PITUser.</description>
+                        <modifiers optional="false" unique="true" initial="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="line1" type="java.lang.String">
                         <description>1st Line.</description>
                         <modifiers/>
                         <persistence type="property"/>
                     </attribute>
-                    <attribute qualifier="line2" type="localized:java.lang.String">
+                    <attribute qualifier="line2" type="java.lang.String">
                         <description>Line 2.</description>
                         <modifiers/>
                         <persistence type="property"/>
                     </attribute>
-                    <attribute qualifier="city" type="localized:java.lang.String">
+                    <attribute qualifier="city" type="java.lang.String">
                         <description>City Name.</description>
                         <modifiers/>
                         <persistence type="property"/>
                     </attribute>
-                    <attribute qualifier="zipCode" type="localized:java.lang.Integer">
+                    <attribute qualifier="zipCode" type="java.lang.Integer">
                         <description>ZIP Code.</description>
                         <modifiers/>
                         <persistence type="property"/>
