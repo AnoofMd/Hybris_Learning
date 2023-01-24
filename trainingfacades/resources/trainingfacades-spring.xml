@@ -213,6 +213,8 @@
           class="org.training.facades.pits.impl.PITUserFacadeImpl">
         <property name="pitUserService" ref="pitUserService" />
         <property name="pitUserConverter" ref="pitUserConverter" />
+        <property name="pitUserReverseConverter" ref="pitUserReverseConverter" />
+        <property name="modelService" ref="modelService"/>
     </bean>
 
     <alias name="pitUserConverter" alias="pitUserConverter"/>
@@ -226,5 +228,18 @@
     </bean>
 
     <bean id="pitUserPopulator" class="org.training.facades.populators.PITUserPopulator">
+    </bean>
+
+    <alias name="pitUserReverseConverter" alias="pitUserReverseConverter"/>
+    <bean id="pitUserReverseConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="org.training.core.model.PITUserModel"/>
+        <property name="populators">
+            <list>
+                <ref bean="pitUserReversePopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="pitUserReversePopulator" class="org.training.facades.populators.PITUserReversePopulator">
     </bean>
 </beans>

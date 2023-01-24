@@ -5,16 +5,16 @@ import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdParam;
 
 import javax.annotation.Resource;
 
+import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
 import io.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
 import org.training.facades.pits.PITUserFacade;
+import org.training.facades.product.data.PITUserData;
 import org.training.facades.product.data.PITUserDataListWSDTO;
 import sample.webservice.queues.data.PITUserDataList;
 
@@ -42,6 +42,12 @@ public class PITUserController extends BaseCommerceController {
         pitUserDataList.setPitUser(pitUserFacade.getAllPITUsers());
         return getDataMapper().map(pitUserDataList, PITUserDataListWSDTO.class, fields);
 
+    }
+    @RequestMapping(value = "/savePITUser", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public void savePITUser(@ApiFieldsParam @RequestBody PITUserData pitUserData){
+        pitUserFacade.savePITUser(pitUserData);
     }
 
 

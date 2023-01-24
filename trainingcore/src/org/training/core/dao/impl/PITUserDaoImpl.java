@@ -5,6 +5,8 @@ import de.hybris.platform.servicelayer.search.FlexibleSearchService;
 import de.hybris.platform.servicelayer.search.SearchResult;
 import org.training.core.dao.PITUserDao;
 import org.training.core.model.PITUserModel;
+import org.training.core.service.impl.PITUserServiceImpl;
+import org.training.facades.product.data.PITUserData;
 
 
 import java.util.Collections;

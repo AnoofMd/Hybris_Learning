@@ -546,5 +546,7 @@
 		<property name="flexibleSearchService" ref="flexibleSearchService"/>
 		<property name="modelService" ref="modelService"/>
 	</bean>
-	<bean id="pitUserService" class="org.training.core.service.impl.PITUserServiceImpl" ></bean>
+	<bean id="pitUserService" class="org.training.core.service.impl.PITUserServiceImpl" >
+
+	</bean>
 </beans>
