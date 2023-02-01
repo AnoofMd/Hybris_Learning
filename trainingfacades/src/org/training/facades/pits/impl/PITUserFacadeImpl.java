@@ -29,8 +29,8 @@ public class PITUserFacadeImpl implements PITUserFacade {
 
     @Override
     public void savePITUser(PITUserData pitUserData) {
-        PITUserModel pitUserModel=pitUserReverseConverter.convert(pitUserData);
-        if (pitUserData != null){
+        PITUserModel pitUserModel = pitUserReverseConverter.convert(pitUserData);
+        if (pitUserData != null) {
             modelService.save(pitUserModel);
         }
     }

@@ -46,7 +46,7 @@ public class PITUserController extends BaseCommerceController {
     @RequestMapping(value = "/savePITUser", method = RequestMethod.POST)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.CREATED)
-    public void savePITUser(@ApiFieldsParam @RequestBody PITUserData pitUserData){
+    public void savePITUser(@RequestBody PITUserData pitUserData){
         pitUserFacade.savePITUser(pitUserData);
     }
 
