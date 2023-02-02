@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 19-Jan-2023, 4:33:45 pm                     ---
+ * --- Generated at 01-Feb-2023, 3:58:01 pm                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -10,11 +10,8 @@ import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.JaloBusinessException;
-import de.hybris.platform.jalo.JaloInvalidParameterException;
 import de.hybris.platform.jalo.JaloSystemException;
 import de.hybris.platform.jalo.SessionContext;
-import de.hybris.platform.jalo.c2l.C2LManager;
-import de.hybris.platform.jalo.c2l.Language;
 import de.hybris.platform.jalo.extension.Extension;
 import de.hybris.platform.jalo.product.Product;
 import de.hybris.platform.jalo.type.ComposedType;
@@ -64,11 +61,7 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	 */
 	public String getCompanyName(final SessionContext ctx, final Product item)
 	{
-		if( ctx == null || ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedProduct.getCompanyName requires a session language", 0 );
-		}
-		return (String)item.getLocalizedProperty( ctx, TrainingCoreConstants.Attributes.Product.COMPANYNAME);
+		return (String)item.getProperty( ctx, TrainingCoreConstants.Attributes.Product.COMPANYNAME);
 	}
 	
 	/**
@@ -81,38 +74,12 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Product.companyName</code> attribute. 
-	 * @return the localized companyName - company Name of the Product
-	 */
-	public Map<Language,String> getAllCompanyName(final SessionContext ctx, final Product item)
-	{
-		return (Map<Language,String>)item.getAllLocalizedProperties(ctx,TrainingCoreConstants.Attributes.Product.COMPANYNAME,C2LManager.getInstance().getAllLanguages());
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Product.companyName</code> attribute. 
-	 * @return the localized companyName - company Name of the Product
-	 */
-	public Map<Language,String> getAllCompanyName(final Product item)
-	{
-		return getAllCompanyName( getSession().getSessionContext(), item );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Setter of the <code>Product.companyName</code> attribute. 
 	 * @param value the companyName - company Name of the Product
 	 */
 	public void setCompanyName(final SessionContext ctx, final Product item, final String value)
 	{
-		if ( ctx == null) 
-		{
-			throw new JaloInvalidParameterException( "ctx is null", 0 );
-		}
-		if( ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedProduct.setCompanyName requires a session language", 0 );
-		}
-		item.setLocalizedProperty(ctx, TrainingCoreConstants.Attributes.Product.COMPANYNAME,value);
+		item.setProperty(ctx, TrainingCoreConstants.Attributes.Product.COMPANYNAME,value);
 	}
 	
 	/**
@@ -122,24 +89,6 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public void setCompanyName(final Product item, final String value)
 	{
 		setCompanyName( getSession().getSessionContext(), item, value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Product.companyName</code> attribute. 
-	 * @param value the companyName - company Name of the Product
-	 */
-	public void setAllCompanyName(final SessionContext ctx, final Product item, final Map<Language,String> value)
-	{
-		item.setAllLocalizedProperties(ctx,TrainingCoreConstants.Attributes.Product.COMPANYNAME,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Product.companyName</code> attribute. 
-	 * @param value the companyName - company Name of the Product
-	 */
-	public void setAllCompanyName(final Product item, final Map<Language,String> value)
-	{
-		setAllCompanyName( getSession().getSessionContext(), item, value );
 	}
 	
 	public ApparelProduct createApparelProduct(final SessionContext ctx, final Map attributeValues)

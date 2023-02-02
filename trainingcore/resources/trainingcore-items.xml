@@ -186,9 +186,9 @@
             <itemtype code="Product" autocreate="false" generate="false">
                 <description>Extends existing type with additional attribute Company Name.</description>
                 <attributes>
-                    <attribute qualifier="companyName" type="localized:java.lang.String">
+                    <attribute qualifier="companyName" type="java.lang.String">
                         <persistence type="property"/>
-                        <modifiers/>
+                        <modifiers read="true" write="true" search="true" optional="true" unique="false"/>
                         <description>company Name of the Product</description>
                     </attribute>
                 </attributes>
