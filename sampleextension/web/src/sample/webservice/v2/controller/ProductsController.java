@@ -37,6 +37,7 @@ import de.hybris.platform.webservicescommons.cache.CacheControl;
 import de.hybris.platform.webservicescommons.cache.CacheControlDirective;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdParam;
 import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
+import org.training.facades.pits.CustomProductFacade;
 import sample.webservice.formatters.WsDateFormatter;
 import sample.webservice.product.data.ReviewDataList;
 import sample.webservice.product.data.SuggestionDataList;
@@ -50,6 +51,7 @@ import sample.webservice.validator.PointOfServiceValidator;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.QueryParam;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -109,8 +111,8 @@ public class ProductsController extends BaseController
 
 	@Resource(name = "storeFinderStockFacade")
 	private StoreFinderStockFacade storeFinderStockFacade;
-	@Resource(name = "cwsProductFacade")
-	private ProductFacade productFacade;
+	@Resource(name = "productFacade")
+	private CustomProductFacade productFacade;
 	@Resource(name = "wsDateFormatter")
 	private WsDateFormatter wsDateFormatter;
 	@Resource(name = "productSearchFacade")
@@ -131,6 +133,14 @@ public class ProductsController extends BaseController
 	private CatalogFacade catalogFacade;
 	@Resource(name = "productsHelper")
 	private ProductsHelper productsHelper;
+
+	@RequestMapping(value = "/{productCode}", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseBody
+	public void saveCompanyName(@PathVariable final String productCode, @QueryParam("companyName") final String companyName){
+		productFacade.saveCompanyName(productCode,companyName);
+	}
+
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	@ResponseBody

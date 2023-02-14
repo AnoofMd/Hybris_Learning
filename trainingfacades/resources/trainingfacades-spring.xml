@@ -242,4 +242,15 @@
 
     <bean id="pitUserReversePopulator" class="org.training.facades.populators.PITUserReversePopulator">
     </bean>
+
+    <alias name="customSearchResultVariantProductPopulator" alias="commerceSearchResultProductPopulator"/>
+    <bean id="customSearchResultVariantProductPopulator" class="org.training.facades.populators.CustomSearchResultVariantPopulator"
+          parent="variantCommerceSearchResultProductPopulator"/>
+
+    <alias name="defaultCustomProductFacade" alias="productFacade"/>
+    <bean id="defaultCustomProductFacade" class="org.training.facades.pits.impl.DefaultCustomProductFacade" parent="defaultProductFacade">
+        <property name="modelService" ref="modelService"/>
+        <property name="productService" ref="productService"/>
+        <property name="catalogVersionService" ref="catalogVersionService"/>
+    </bean>
 </beans>
