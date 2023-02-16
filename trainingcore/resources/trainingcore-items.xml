@@ -145,6 +145,11 @@
                         <modifiers/>
                         <persistence type="property"/>
                     </attribute>
+                    <attribute autocreate="true" qualifier="user_since" type="java.lang.Integer">
+                        <modifiers write="false"/>
+                        <persistence type="dynamic" attributeHandler="pitUserAge"/>
+                        <description>Dynamic attribute for customer site age</description>
+                    </attribute>
                 </attributes>
             </itemtype>
 
