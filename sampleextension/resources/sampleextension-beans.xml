@@ -188,6 +188,7 @@
 		<property name="id" type="Integer"/>
 		<property name="name" type="String"/>
 		<property name="job_title" type="String"/>
+		<property name="user_since" type="Integer"/>
 
 	</bean>
 

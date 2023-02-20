@@ -24,7 +24,7 @@ public class PITUserPopulator implements Populator<PITUserModel, PITUserData> {
         target.setId(source.getId());
         target.setName(source.getName());
         target.setJob_title(source.getJob_title());
-
+        target.setUser_since(source.getUser_since());
     }
 
 }

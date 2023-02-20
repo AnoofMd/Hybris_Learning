@@ -27,4 +27,8 @@ public class PitUserAgeHandler extends
         }
         return pituserAge;
     }
+    public void set(final PITUserModel arg0, final Integer arg1)
+    {
+
+    }
 }

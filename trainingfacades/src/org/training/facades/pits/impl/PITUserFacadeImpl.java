@@ -23,7 +23,6 @@ public class PITUserFacadeImpl implements PITUserFacade {
     public List<PITUserData> getAllPITUsers() {
 
         final List<PITUserModel> pitUserModels = pitUserService.getAllPITUsers();
-
         return Converters.convertAll(pitUserModels, getPitUserConverter());
     }
 
