@@ -50,5 +50,11 @@ public class PITUserController extends BaseCommerceController {
         pitUserFacade.savePITUser(pitUserData);
     }
 
+    @RequestMapping(value = "/updatePITUser/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public void updatePitUser(@PathVariable final int id){
+        pitUserFacade.updatePitUser(id);
+    }
 
 }

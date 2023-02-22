@@ -54,11 +54,16 @@
 		<property name="resource" value="classpath:/trainingfulfilmentprocess/process/return-process.xml"/>
 	</bean>
 
+	<bean id="pitUserProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/trainingfulfilmentprocess/process/updatePitUser-process.xml"/>
+	</bean>
+
 	<!-- Process Actions -->
 
 	<import resource="/trainingfulfilmentprocess/process/order-process-spring.xml"/>
 	<import resource="/trainingfulfilmentprocess/process/consignment-process-spring.xml"/>
 	<import resource="/trainingfulfilmentprocess/process/return-process-spring.xml"/>
+	<import resource="/trainingfulfilmentprocess/process/updatePitUser-process-spring.xml"/>
 
 	<!-- Order Check Service -->
 	<!-- Performs some basic validation for the order as part of the first stage of the process. -->

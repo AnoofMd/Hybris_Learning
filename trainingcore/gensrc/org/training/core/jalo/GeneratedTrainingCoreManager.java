@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 17-Feb-2023, 2:53:57 pm                     ---
+ * --- Generated at 22-Feb-2023, 2:24:03 pm                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -23,6 +23,7 @@ import org.training.core.constants.TrainingCoreConstants;
 import org.training.core.jalo.ApparelProduct;
 import org.training.core.jalo.ApparelSizeVariantProduct;
 import org.training.core.jalo.ApparelStyleVariantProduct;
+import org.training.core.jalo.ColumnUpdateProcess;
 import org.training.core.jalo.ElectronicsColorVariantProduct;
 import org.training.core.jalo.HelloWorldCronJob;
 import org.training.core.jalo.PITAddress;
@@ -167,6 +168,32 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public ApparelStyleVariantProduct createApparelStyleVariantProduct(final Map attributeValues)
 	{
 		return createApparelStyleVariantProduct( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public ColumnUpdateProcess createColumnUpdateProcess(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.COLUMNUPDATEPROCESS );
+			return (ColumnUpdateProcess)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating ColumnUpdateProcess : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public ColumnUpdateProcess createColumnUpdateProcess(final Map attributeValues)
+	{
+		return createColumnUpdateProcess( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public ElectronicsColorVariantProduct createElectronicsColorVariantProduct(final SessionContext ctx, final Map attributeValues)

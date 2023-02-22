@@ -8,4 +8,8 @@ import java.util.List;
 
 public interface PITUserService {
     List<PITUserModel> getAllPITUsers();
+
+    void createColumnUpdateBusinessProcess(PITUserModel pitUserModel);
+    PITUserModel getPitUserByCode(int id);
+
 }

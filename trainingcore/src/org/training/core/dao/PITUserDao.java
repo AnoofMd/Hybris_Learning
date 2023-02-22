@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface PITUserDao extends Dao {
     List<PITUserModel> getAllPITUsers();
+
+    PITUserModel getPitUserByCode(int id);
 }

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 17-Feb-2023, 2:53:57 pm                     ---
+ * --- Generated at 22-Feb-2023, 2:24:03 pm                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.constants;
@@ -19,6 +19,7 @@ public class GeneratedTrainingCoreConstants
 		public static final String APPARELPRODUCT = "ApparelProduct".intern();
 		public static final String APPARELSIZEVARIANTPRODUCT = "ApparelSizeVariantProduct".intern();
 		public static final String APPARELSTYLEVARIANTPRODUCT = "ApparelStyleVariantProduct".intern();
+		public static final String COLUMNUPDATEPROCESS = "ColumnUpdateProcess".intern();
 		public static final String ELECTRONICSCOLORVARIANTPRODUCT = "ElectronicsColorVariantProduct".intern();
 		public static final String HELLOWORLDCRONJOB = "HelloWorldCronJob".intern();
 		public static final String PITADDRESS = "PITAddress".intern();

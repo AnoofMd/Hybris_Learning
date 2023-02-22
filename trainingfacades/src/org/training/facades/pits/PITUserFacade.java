@@ -8,4 +8,6 @@ import java.util.List;
 public interface PITUserFacade {
     List<PITUserData> getAllPITUsers();
     void savePITUser(PITUserData pitUserData);
+
+    void updatePitUser(int id);
 }

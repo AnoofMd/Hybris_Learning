@@ -199,5 +199,17 @@
                 </attributes>
             </itemtype>
         </typegroup>
+
+        <typegroup name="ColumnUpdateProcess">
+            <itemtype code="ColumnUpdateProcess" autocreate="true" generate="true" extends="BusinessProcess">
+                <description>Business Process For Updating PIT User.</description>
+                <attributes>
+                    <attribute qualifier="pitUser" type="PITUser">
+                        <persistence type="property"/>
+                        <description>Pit User Attribute</description>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
     </itemtypes>
 </items>

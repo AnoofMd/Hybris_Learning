@@ -547,6 +547,9 @@
 		<property name="modelService" ref="modelService"/>
 	</bean>
 	<bean id="pitUserService" class="org.training.core.service.impl.PITUserServiceImpl" >
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+
 	</bean>
 	<bean id="pitUserAge"
 		  class="org.training.core.attributes.PitUserAgeHandler"/>
