@@ -57,4 +57,10 @@ public class PITUserController extends BaseCommerceController {
         pitUserFacade.updatePitUser(id);
     }
 
+    @RequestMapping(value = "/sendEmailToPitUser/{id}")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public void sendEmailToPitUser(@PathVariable final int id){
+        pitUserFacade.sendEmailToPitUser(id);
+    }
 }

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 22-Feb-2023, 2:24:03 pm                     ---
+ * --- Generated at 24-Feb-2023, 2:40:25 pm                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.constants;
@@ -22,8 +22,10 @@ public class GeneratedTrainingCoreConstants
 		public static final String COLUMNUPDATEPROCESS = "ColumnUpdateProcess".intern();
 		public static final String ELECTRONICSCOLORVARIANTPRODUCT = "ElectronicsColorVariantProduct".intern();
 		public static final String HELLOWORLDCRONJOB = "HelloWorldCronJob".intern();
+		public static final String HYBRISTUBEEMAILPROCESS = "HybrisTubeEmailProcess".intern();
 		public static final String PITADDRESS = "PITAddress".intern();
 		public static final String PITUSER = "PITUser".intern();
+		public static final String PITUSEREMAILPROCESS = "PitUserEmailProcess".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();
 	}
 	public static class Attributes

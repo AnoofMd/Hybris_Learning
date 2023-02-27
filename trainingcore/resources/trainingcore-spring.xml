@@ -549,8 +549,37 @@
 	<bean id="pitUserService" class="org.training.core.service.impl.PITUserServiceImpl" >
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
+		<property name="eventService" ref="eventService"/>
+		<property name="baseSiteService" ref="baseSiteService"/>
+		<property name="commonI18NService" ref="commonI18NService"/>
+		<property name="userService" ref="userService"/>
 
 	</bean>
 	<bean id="pitUserAge"
 		  class="org.training.core.attributes.PitUserAgeHandler"/>
+
+	<bean id="hybrisTubeEmailProcessDefinitionResource"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/trainingcore/processes/hybrisTubeEmailProcess.xml"/>
+	</bean>
+	<bean id="generateHybisTubeEmailAction" parent="abstractGenerateEmailAction">
+		<property name="frontendTemplateName" value="HybrisTubeEmailTemplate"/>
+	</bean>
+	<bean id="hybrisTubeEmailEventListener"
+		  class="org.training.core.event.HybrisTubeEmailEventListener" parent="abstractAcceleratorSiteEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+	<bean id="pitUserEmailProcessDefinitionResource"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/trainingcore/processes/pitUserEmailProcess.xml"/>
+	</bean>
+	<bean id="generatePitUserEmailAction" parent="abstractGenerateEmailAction">
+		<property name="frontendTemplateName" value="PitUserEmailTemplate"/>
+	</bean>
+	<bean id="pitUserEmailEventListener"
+		  class="org.training.core.event.PitUserEmailEventListener" parent="abstractEventListener">
+		<property name="businessProcessService" ref="businessProcessService"/>
+		<property name="modelService" ref="modelService"/>
+	</bean>
 </beans>

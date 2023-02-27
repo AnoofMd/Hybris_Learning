@@ -211,5 +211,31 @@
                 </attributes>
             </itemtype>
         </typegroup>
+
+        <typegroup name="HybrisTubeEmailProcess">
+        <itemtype code="HybrisTubeEmailProcess" autocreate="true"
+                  generate="true"
+                  jaloclass="de.hybris.training.core.jalo.HybrisTubeEmailProcess"
+                  extends="StoreFrontCustomerProcess">
+            <attributes>
+                <attribute type="AbstractOrder" qualifier="cart">
+                    <description> Eligibility for Gold Customer Cart (A Customer cart becomes Gold Cart when cart total is greater than 100)  </description>
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+        </typegroup>
+        <typegroup name="PitUserEmailProcess">
+            <itemtype code="PitUserEmailProcess" autocreate="true" generate="true" jaloclass="de.hybris.training.core.jalo.PitUserEmailProcess"
+                      extends="StoreFrontCustomerProcess">>
+                <description>Email Process For PIT User.</description>
+                <attributes>
+                    <attribute qualifier="pitUser" type="PITUser">
+                        <persistence type="property"/>
+                        <description>Pit User Attribute</description>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
     </itemtypes>
 </items>

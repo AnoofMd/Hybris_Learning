@@ -32,6 +32,7 @@ import de.hybris.platform.commercefacades.product.ProductFacade;
 import de.hybris.platform.commercefacades.product.ProductOption;
 import de.hybris.platform.commercefacades.product.data.ProductData;
 import de.hybris.platform.commercefacades.quote.data.QuoteData;
+import de.hybris.platform.commercefacades.user.UserFacade;
 import de.hybris.platform.commercefacades.voucher.VoucherFacade;
 import de.hybris.platform.commercefacades.voucher.exceptions.VoucherOperationException;
 import de.hybris.platform.commerceservices.order.CommerceCartModificationException;
@@ -39,9 +40,14 @@ import de.hybris.platform.commerceservices.order.CommerceCartModificationStatus;
 import de.hybris.platform.commerceservices.order.CommerceSaveCartException;
 import de.hybris.platform.commerceservices.security.BruteForceAttackHandler;
 import de.hybris.platform.core.enums.QuoteState;
+import de.hybris.platform.core.model.order.CartModel;
 import de.hybris.platform.enumeration.EnumerationService;
+import de.hybris.platform.order.CartService;
+import de.hybris.platform.servicelayer.event.EventService;
+import de.hybris.platform.servicelayer.event.events.AbstractEvent;
 import de.hybris.platform.site.BaseSiteService;
 import de.hybris.platform.util.Config;
+import org.training.core.event.HybrisTubeEmailEvent;
 import org.training.storefront.controllers.ControllerConstants;
 
 import java.io.IOException;
@@ -125,6 +131,15 @@ public class CartPageController extends AbstractCartPageController
 	@Resource(name = "bruteForceAttackHandler")
 	private BruteForceAttackHandler bruteForceAttackHandler;
 
+	@Resource(name = "userFacade")
+	private UserFacade userFacade;
+
+	@Resource(name = "cartService")
+	private CartService cartService;
+
+	@Resource(name = "eventService")
+	private EventService eventService;
+
 	@ModelAttribute("showCheckoutStrategies")
 	public boolean isCheckoutStrategyVisible()
 	{
@@ -134,7 +149,28 @@ public class CartPageController extends AbstractCartPageController
 	@RequestMapping(method = RequestMethod.GET)
 	public String showCart(final Model model) throws CMSItemNotFoundException
 	{
+
+		if (!userFacade.isAnonymousUser())
+		{
+			final CartModel cartModel=cartService.getSessionCart();
+			if(cartModel.getTotalPrice()>=Double.valueOf(100)) {
+
+				eventService.publishEvent(initializeEvent(
+						new HybrisTubeEmailEvent(cartModel, cartModel.getStore(), cartModel.getSite(), cartModel.getCurrency()),
+						cartModel));
+
+			}
+		}
+
 		return prepareCartUrl(model);
+	}
+
+	private AbstractEvent initializeEvent(final HybrisTubeEmailEvent hybrisTubeEmailEvent, final CartModel cartModel)
+	{
+
+		hybrisTubeEmailEvent.setCart(cartModel);
+		return hybrisTubeEmailEvent;
+
 	}
 
 	protected String prepareCartUrl(final Model model) throws CMSItemNotFoundException

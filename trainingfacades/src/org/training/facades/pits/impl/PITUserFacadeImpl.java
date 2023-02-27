@@ -40,6 +40,12 @@ public class PITUserFacadeImpl implements PITUserFacade {
         pitUserService.createColumnUpdateBusinessProcess(pitUserModel);
     }
 
+    @Override
+    public void sendEmailToPitUser(int id) {
+        final PITUserModel pitUserModel = pitUserService.getPitUserByCode(id);
+        pitUserService.sendEmailToPitUser(pitUserModel);
+    }
+
     public PITUserService getPitUserService() {
         return pitUserService;
     }

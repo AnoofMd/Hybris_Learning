@@ -10,4 +10,5 @@ public interface PITUserFacade {
     void savePITUser(PITUserData pitUserData);
 
     void updatePitUser(int id);
+    void sendEmailToPitUser(int id);
 }

@@ -12,4 +12,6 @@ public interface PITUserService {
     void createColumnUpdateBusinessProcess(PITUserModel pitUserModel);
     PITUserModel getPitUserByCode(int id);
 
+    void sendEmailToPitUser(PITUserModel pitUserModel);
+
 }

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 22-Feb-2023, 2:24:03 pm                     ---
+ * --- Generated at 24-Feb-2023, 2:40:25 pm                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -16,6 +16,8 @@ import de.hybris.platform.jalo.extension.Extension;
 import de.hybris.platform.jalo.product.Product;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.JaloGenericCreationException;
+import de.hybris.training.core.jalo.HybrisTubeEmailProcess;
+import de.hybris.training.core.jalo.PitUserEmailProcess;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -248,6 +250,32 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 		return createHelloWorldCronJob( getSession().getSessionContext(), attributeValues );
 	}
 	
+	public HybrisTubeEmailProcess createHybrisTubeEmailProcess(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.HYBRISTUBEEMAILPROCESS );
+			return (HybrisTubeEmailProcess)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating HybrisTubeEmailProcess : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public HybrisTubeEmailProcess createHybrisTubeEmailProcess(final Map attributeValues)
+	{
+		return createHybrisTubeEmailProcess( getSession().getSessionContext(), attributeValues );
+	}
+	
 	public PITAddress createPITAddress(final SessionContext ctx, final Map attributeValues)
 	{
 		try
@@ -298,6 +326,32 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public PITUser createPITUser(final Map attributeValues)
 	{
 		return createPITUser( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public PitUserEmailProcess createPitUserEmailProcess(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.PITUSEREMAILPROCESS );
+			return (PitUserEmailProcess)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating PitUserEmailProcess : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public PitUserEmailProcess createPitUserEmailProcess(final Map attributeValues)
+	{
+		return createPitUserEmailProcess( getSession().getSessionContext(), attributeValues );
 	}
 	
 	@Override

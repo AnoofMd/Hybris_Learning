@@ -253,4 +253,8 @@
         <property name="productService" ref="productService"/>
         <property name="catalogVersionService" ref="catalogVersionService"/>
     </bean>
+    <bean id="hybrisTubeEmailContext" class="org.training.facades.process.email.context.HybrisTubeEmailContext" parent="abstractEmailContext" scope="prototype" >
+    </bean>
+    <bean id="pitUserEmailContext" class="org.training.facades.process.email.context.PitUserEmailContext" parent="abstractEmailContext" scope="prototype" >
+    </bean>
 </beans>
