@@ -46,7 +46,6 @@ public class PITUserServiceImpl implements PITUserService {
         final String processCode = fulfilmentProcessDefinitionName + "-" +pitUserModel.getId() + "-" +System.currentTimeMillis();
         final ColumnUpdateProcessModel businessProcessModel = getBusinessProcessService().createProcess(processCode, fulfilmentProcessDefinitionName);
         businessProcessModel.setPitUser(pitUserModel);
-        //getModelService().save(businessProcessModel);
         getBusinessProcessService().startProcess(businessProcessModel);
         LOG.info(String.format("Started process %s", processCode));
     }

@@ -9,7 +9,6 @@ public class PitUserValidateInterceptor implements ValidateInterceptor<PITUserMo
 
     @Override
     public void onValidate(PITUserModel pitUserModel, InterceptorContext interceptorContext) throws InterceptorException {
-        System.out.println("Validate Successful !");
-
+        System.out.println("Validation Successful !");
     }
 }

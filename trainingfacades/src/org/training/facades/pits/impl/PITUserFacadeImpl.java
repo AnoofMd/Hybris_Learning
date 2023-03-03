@@ -55,6 +55,10 @@ public class PITUserFacadeImpl implements PITUserFacade {
             modelService.save(pitAddressModel);
     }
 
+    public void deletePitUserById(int id){
+        modelService.remove(pitUserService.getPitUserByCode(id).getPk());
+    }
+
     public PITUserService getPitUserService() {
         return pitUserService;
     }

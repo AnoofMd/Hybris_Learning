@@ -52,6 +52,13 @@ public class PITUserController extends BaseCommerceController {
         pitUserFacade.savePITUser(pitUserData);
     }
 
+    @RequestMapping(value = "/deletePitUserById/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public void deletePitUserById(@PathVariable int id){
+        pitUserFacade.deletePitUserById(id);
+    }
+
     @RequestMapping(value = "/updatePITUser/{id}", method = RequestMethod.POST)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.CREATED)
