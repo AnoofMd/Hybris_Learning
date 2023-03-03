@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
+import org.training.core.jalo.PITUser;
 import org.training.facades.pits.PITUserFacade;
+import org.training.facades.product.data.PITAddressData;
 import org.training.facades.product.data.PITUserData;
 import org.training.facades.product.data.PITUserDataListWSDTO;
 import sample.webservice.queues.data.PITUserDataList;
@@ -62,5 +64,12 @@ public class PITUserController extends BaseCommerceController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public void sendEmailToPitUser(@PathVariable final int id){
         pitUserFacade.sendEmailToPitUser(id);
+    }
+
+    @RequestMapping(value = "/savePitAddress", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public void savePitAddress(@RequestBody PITAddressData pitAddressData){
+        pitUserFacade.savePitAddress(pitAddressData);
     }
 }

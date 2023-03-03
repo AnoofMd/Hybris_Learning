@@ -3,9 +3,11 @@ package org.training.facades.pits.impl;
 import de.hybris.platform.converters.Converters;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 import de.hybris.platform.servicelayer.model.ModelService;
+import org.training.core.model.PITAddressModel;
 import org.training.core.model.PITUserModel;
 import org.training.core.service.PITUserService;
 import org.training.facades.pits.PITUserFacade;
+import org.training.facades.product.data.PITAddressData;
 import org.training.facades.product.data.PITUserData;
 
 import javax.annotation.Resource;
@@ -16,6 +18,7 @@ public class PITUserFacadeImpl implements PITUserFacade {
     private PITUserService pitUserService;
     private Converter<PITUserModel, PITUserData> pitUserConverter;
     private Converter<PITUserData, PITUserModel> pitUserReverseConverter;
+    private Converter<PITAddressData, PITAddressModel> pitAddressReverseConverter;
 
     private ModelService modelService;
 
@@ -46,6 +49,12 @@ public class PITUserFacadeImpl implements PITUserFacade {
         pitUserService.sendEmailToPitUser(pitUserModel);
     }
 
+    @Override
+    public void savePitAddress(PITAddressData pitAddressData) {
+        PITAddressModel pitAddressModel = pitAddressReverseConverter.convert(pitAddressData);
+            modelService.save(pitAddressModel);
+    }
+
     public PITUserService getPitUserService() {
         return pitUserService;
     }
@@ -68,6 +77,14 @@ public class PITUserFacadeImpl implements PITUserFacade {
 
     public void setPitUserReverseConverter(Converter<PITUserData, PITUserModel> pitUserReverseConverter) {
         this.pitUserReverseConverter = pitUserReverseConverter;
+    }
+
+    public Converter<PITAddressData, PITAddressModel> getPitAddressReverseConverter() {
+        return pitAddressReverseConverter;
+    }
+
+    public void setPitAddressReverseConverter(Converter<PITAddressData, PITAddressModel> pitAddressReverseConverter) {
+        this.pitAddressReverseConverter = pitAddressReverseConverter;
     }
 
     public ModelService getModelService() {

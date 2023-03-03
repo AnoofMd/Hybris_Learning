@@ -17,6 +17,14 @@
 		<property name="id" type="Integer"/>
 		<property name="name" type="String"/>
 		<property name="job_title" type="String"/>
-		<property name="user_since" type="Integer"></property>
+		<property name="user_since" type="Integer"/>
+	</bean>
+	<bean class="org.training.facades.product.data.PITAddressData">
+		<property name="addressId" type="Integer"/>
+		<property name="line1" type="String"/>
+		<property name="line2" type="String"/>
+		<property name="city" type="String"/>
+		<property name="zipCode" type="Integer"/>
+		<property name="user" type="PITUserData"/>
 	</bean>
 </beans>

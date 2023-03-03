@@ -214,6 +214,7 @@
         <property name="pitUserService" ref="pitUserService" />
         <property name="pitUserConverter" ref="pitUserConverter" />
         <property name="pitUserReverseConverter" ref="pitUserReverseConverter" />
+        <property name="pitAddressReverseConverter" ref="pitAddressReverseConverter" />
         <property name="modelService" ref="modelService"/>
     </bean>
 
@@ -239,8 +240,20 @@
             </list>
         </property>
     </bean>
+    <alias name="pitAddressReverseConverter" alias="pitAddressReverseConverter"/>
+    <bean id="pitAddressReverseConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="org.training.core.model.PITAddressModel"/>
+        <property name="populators">
+            <list>
+                <ref bean="pitAddressReversePopulator"/>
+            </list>
+        </property>
+    </bean>
 
     <bean id="pitUserReversePopulator" class="org.training.facades.populators.PITUserReversePopulator">
+    </bean>
+    <bean id="pitAddressReversePopulator" class="org.training.facades.populators.PitAddressReversePopulator">
+        <property name="pitUserService" ref="pitUserService"/>
     </bean>
 
     <alias name="customSearchResultVariantProductPopulator" alias="commerceSearchResultProductPopulator"/>

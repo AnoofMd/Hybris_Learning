@@ -582,4 +582,19 @@
 		<property name="businessProcessService" ref="businessProcessService"/>
 		<property name="modelService" ref="modelService"/>
 	</bean>
+
+	<bean id="pitUserValidateInterceptor" class="org.training.core.interceptors.PitUserValidateInterceptor">
+	</bean>
+	<bean id="pitUserValidateInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="pitUserValidateInterceptor"/>
+		<property name="typeCode" value="PITUser"/>
+	</bean>
+
+	<bean id="pitAddressValidateInterceptor" class="org.training.core.interceptors.PitAddressValidateInterceptor">
+	</bean>
+	<bean id="pitAddressValidateInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="pitAddressValidateInterceptor"/>
+		<property name="typeCode" value="PITAddress"/>
+	</bean>
+
 </beans>
