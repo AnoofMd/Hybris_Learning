@@ -590,6 +590,13 @@
 		<property name="typeCode" value="PITUser"/>
 	</bean>
 
+	<bean id="pitUserRemoveInterceptor" class="org.training.core.interceptors.PitUserRemoveInterceptor">
+	</bean>
+	<bean id="pitUserRemoveInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="pitUserRemoveInterceptor"/>
+		<property name="typeCode" value="PITUser"/>
+	</bean>
+
 	<bean id="pitAddressValidateInterceptor" class="org.training.core.interceptors.PitAddressValidateInterceptor">
 		<property name="pitUserService" ref="pitUserService"/>
 	</bean>
