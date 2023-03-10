@@ -1,0 +1,120 @@
+##--------------------For Email Process-----------------------
+
+$contentCatalog=apparel-ukContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+$wideContent=CMSImageComponent,BannerComponent
+
+# Import modulegen config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$jarResourceCms=$config-jarResourceCmsValue
+$emailPackageName=$config-emailContextPackageName
+$emailResource=$config-emailResourceValue
+
+$lang=en
+
+INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;rendererType(code)[default='velocity']
+                              ;pitUserEmailBody;$emailPackageName.PitUserEmailContext
+                              ;pitUserEmailSubject;$emailPackageName.PitUserEmailContext
+
+
+UPDATE RendererTemplate;code[unique=true];description[lang=$lang];templateScript[lang=$lang,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                       ;pitUserEmailBody;"PIT User Email Body";$emailResource/email-pitUserEmailBody.vm
+                       ;pitUserEmailSubject;"PIT User Email Subject";$emailResource/email-pitUserEmailSubject.vm
+
+
+INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;active;frontendTemplateName;subject(code);htmlTemplate(code);restrictedPageTypes(code)
+                               ;;PitUserEmailTemplate;PIT User Email Template;true;PitUserEmail;pitUserEmailSubject;pitUserEmailBody;EmailPage
+
+
+INSERT_UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];fromEmail[lang=en];fromName[lang=en]
+                       ;;PitUserEmail; PIT User Email;PitUserEmailTemplate;true;;anoofmhmda@gmail.com;PIT Admin
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='PitUserEmailTemplate'];validComponentTypes(code)
+                             ;SiteLogo;;;logo
+                             ;TopContent;;$wideContent;
+                             ;BottomContent;;$wideContent;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active
+                         ;;EmailTopSlot;Pit User Email Top Slot;true
+                         ;;EmailBottomSlot;Pit User Email Bottom Slot;true
+                         ;;EmailSiteLogoSlot;Pit User Email Site Slot;true
+
+
+##--------------------For Creating new Product, Media & MediaContainer-----------------------
+
+$productCatalog=electronicsProductCatalog
+$productCatalogName=Electronics Poduct Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+$lang=en
+
+INSERT_UPDATE Product ;  code[unique=true]  ;  name[lang=en]  ;  supercategories(code,$catalogVersion)  ;  $catalogVersion
+                      ;  16410023           ;  Test_Propro
+
+
+$contentCatalog=electronicsProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$contentCatalog]),version[default='Staged'])[unique=true,default=$contentCatalog:Staged]
+$media=@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+$siteResource=file:C:/Users/anoof.md/Desktop
+$medias=medias(code, $catalogVersion)
+
+# Create medias
+INSERT_UPDATE Media;mediaFormat(qualifier);$catalogVersion;code[unique=true];$media;mime[default='image/jpeg'];folder(qualifier)[default='images']
+                   ;300Wx300H; ; /300Wx300H/testImage; $siteResource/test.jpg
+
+
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
+                            ; testImage; /300Wx300H/testImage;
+
+
+##--------------------For Creating new Page & addind an Image & Para in it-----------------------
+
+
+
+$contentCatalog=electronicsContentCatalog
+$contentCatalogName=Electronics Content Catalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog=electronicsProductCatalog
+$productCatalogName=Electronics Product Catalog
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$picture=media(code, $contentCV);
+$image=image(code, $contentCV);
+$media=media(code, $contentCV);
+$page=page(uid, $contentCV);
+$contentPage=contentPage(uid, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$siteResource=file:C:/Users/anoof.md/Desktop
+$productResource=jar:de.hybris.platform.electronicsstore.constants.ElectronicsstoreConstants&/electronicsstore/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms=jar:de.hybris.platform.electronicsstore.constants.ElectronicsstoreConstants&/electronicsstore/import/sampledata/cockpits/cmscockpit
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved']
+                         ;;trainingPage;Training page;ContentPage1Template;/trainingPage;;;
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content;;;
+                                   ;;TestInfo;Test Information;TestInfo;<b>Test Information :: </b>This is a Test Sentence.. <br> Thanks <br>Admin
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(&componentRef)
+                         ;;TestInfoSlot;TestInfo
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='trainingPage'];contentSlot(uid,$contentCV)[unique=true];;;
+                                ;;TestInfoSlotForPage;Section2A;;TestInfoSlot
+
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images'];&mediaRef
+                   ;;mediaImage;test.jpeg;$siteResource/test.jpg;image/jpg;Test Image;;mediaImage
+
+
+#Banner component
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;media(&mediaRef)
+                                   ;;TrainingImgBanner;Training Image Banner;TrainingImgBanner;mediaImage
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+                         ;;TestImgSlot;Test Image Slot;true;TrainingImgBanner
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='trainingPage'];contentSlot(uid,$contentCV)[unique=true]
+                                ;;TestSlotForPage;Section2B;;TestImgSlot
+
+
