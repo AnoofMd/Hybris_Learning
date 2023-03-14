@@ -3,12 +3,15 @@ package org.training.facades.pits.impl;
 import de.hybris.platform.converters.Converters;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 import de.hybris.platform.servicelayer.model.ModelService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 import org.training.core.model.PITAddressModel;
 import org.training.core.model.PITUserModel;
 import org.training.core.service.PITUserService;
 import org.training.facades.pits.PITUserFacade;
 import org.training.facades.product.data.PITAddressData;
 import org.training.facades.product.data.PITUserData;
+import org.training.facades.product.data.ResponseData;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -58,6 +61,14 @@ public class PITUserFacadeImpl implements PITUserFacade {
     public void deletePitUserById(int id){
         modelService.remove(pitUserService.getPitUserByCode(id).getPk());
     }
+
+    public ResponseData getResponse(){
+        RestTemplate restTemplate=new RestTemplate();
+        ResponseEntity<ResponseData> response = restTemplate.getForEntity(
+                "https://api.publicapis.org/entries", ResponseData.class);
+        return response.getBody();
+    }
+
 
     public PITUserService getPitUserService() {
         return pitUserService;

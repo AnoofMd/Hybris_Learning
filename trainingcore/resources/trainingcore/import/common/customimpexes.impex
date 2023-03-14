@@ -118,3 +118,13 @@ INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];positi
                                 ;;TestSlotForPage;Section2B;;TestImgSlot
 
 
+
+##--------------------For Creating new pricerow to a product-----------------------
+
+
+
+INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price[translator=de.hybris.training.core.translators.MyCustomTranslator];minqtd;unitFactor;net
+                      ;300441142;pieces;GBP;8.46;1;1;false
+
+
+

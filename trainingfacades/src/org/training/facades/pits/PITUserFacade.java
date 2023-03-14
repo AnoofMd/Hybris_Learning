@@ -3,6 +3,7 @@ package org.training.facades.pits;
 
 import org.training.facades.product.data.PITAddressData;
 import org.training.facades.product.data.PITUserData;
+import org.training.facades.product.data.ResponseData;
 
 import java.util.List;
 
@@ -15,4 +16,5 @@ public interface PITUserFacade {
     void deletePitUserById(int id);
 
     void savePitAddress(PITAddressData pitAddressData);
+    ResponseData getResponse();
 }
