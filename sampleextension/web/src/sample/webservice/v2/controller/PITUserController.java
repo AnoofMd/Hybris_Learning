@@ -5,25 +5,19 @@ import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdParam;
 
 import javax.annotation.Resource;
 
-import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
 import io.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
-import org.springframework.web.client.RestTemplate;
-import org.training.core.jalo.PITUser;
 import org.training.facades.pits.PITUserFacade;
 import org.training.facades.product.data.PITAddressData;
 import org.training.facades.product.data.PITUserData;
 import org.training.facades.product.data.PITUserDataListWSDTO;
 import org.training.facades.product.data.ResponseData;
 import sample.webservice.queues.data.PITUserDataList;
-
-import java.util.Objects;
 
 
 @Controller
@@ -87,6 +81,7 @@ public class PITUserController extends BaseCommerceController {
     @GetMapping(value = "/getResponse")
     @ResponseBody
     public ResponseData getResponse(){
-        return pitUserFacade.getResponse();
+        ResponseData responseData = pitUserFacade.getResponse();
+        return responseData;
     }
 }

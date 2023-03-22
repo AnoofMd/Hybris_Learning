@@ -604,5 +604,11 @@
 		<property name="interceptor" ref="pitAddressValidateInterceptor"/>
 		<property name="typeCode" value="PITAddress"/>
 	</bean>
+	<bean id="firstJobPerformable" class="org.training.core.job.FirstJobPerformable"
+		  parent="abstractJobPerformable"/>
+	<bean id="printDateAndTimeJobPerformable" class="org.training.core.job.PrintDateAndTimeJobPerformable"
+		  parent="abstractJobPerformable"/>
+	<bean id="lastJobPerformable" class="org.training.core.job.LastJobPerformable"
+		  parent="abstractJobPerformable"/>
 
 </beans>
