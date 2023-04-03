@@ -611,4 +611,12 @@
 	<bean id="lastJobPerformable" class="org.training.core.job.LastJobPerformable"
 		  parent="abstractJobPerformable"/>
 
+	<bean id="pitPriceValueProvider"
+		  class="org.training.core.search.solrfacetsearch.provider.impl.PitPriceValueProvider"
+		  parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+		<property name="priceService" ref="priceService" />
+		<property name="productService" ref="productService" />
+	</bean>
+
 </beans>

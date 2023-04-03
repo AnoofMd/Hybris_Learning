@@ -237,5 +237,17 @@
                 </attributes>
             </itemtype>
         </typegroup>
+        <typegroup name="Product">
+            <itemtype code="Product" autocreate="false" generate="false">
+                <description>Extends existing type with additional attribute pitPrice.</description>
+                <attributes>
+                    <attribute qualifier="pitPrice" type="java.lang.Double">
+                        <persistence type="property"/>
+                        <modifiers read="true" write="true" search="true" optional="true" unique="false"/>
+                        <description>PITS Price of the Product</description>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
     </itemtypes>
 </items>

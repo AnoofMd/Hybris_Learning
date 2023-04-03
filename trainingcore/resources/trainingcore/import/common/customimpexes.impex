@@ -126,5 +126,17 @@ INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];positi
 INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price[translator=de.hybris.training.core.translators.MyCustomTranslator];minqtd;unitFactor;net
                       ;300441142;pieces;GBP;8.46;1;1;false
 
+##--------------------For Facets updation of an attribute-----------------------
 
+
+$solrIndexedType = electronicsProductType
+$indexLanguages = en, de
+$indexCurrencies = USD, GBP
+$searchQueryTemplate = searchQueryTemplate(name, indexedType(identifier))[unique=true, default=DEFAULT:$solrIndexedType]
+$indexedProperty = indexedProperty(name, solrIndexedType(identifier[default=$solrIndexedType]))
+
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); sortableType(code); currency[default = false]; localized[default = false]; multiValue[default = false]; facet[default = false]; facetType(code); facetSort(code); priority; visible; fieldValueProvider; valueProviderParameter
+                                 ; $solrIndexedType                          ; companyName        ; string    ;                   ;                          ;                           ;                            ; true                  ; MultiSelectOr  ; Custom         ; 100    ; true   ;
+INSERT_UPDATE SolrSearchQueryProperty; $indexedProperty[unique = true]; priority; facet[default = true]; facetType(code)[default = 'MultiSelectOr']; facetDisplayNameProvider; facetSortProvider; facetTopValuesProvider; ftsQuery[default = false]; ftsQueryBoost; ftsQueryMinTermLength; ftsPhraseQuery[default = false]; ftsPhraseQueryBoost; ftsPhraseQuerySlop; ftsWildcardQuery[default = false]; ftsWildcardQueryBoost; ftsWildcardQueryMinTermLength; ftsWildcardQueryType(code)[default = 'POSTFIX']; ftsFuzzyQuery[default = false]; ftsFuzzyQueryBoost; ftsFuzzyQueryMinTermLength; ftsFuzzyQueryFuzziness; useForHighlighting[default = false]; includeInResponse[default = true]; $searchQueryTemplate
+                                     ; companyName                        ; 100    ;                      ;                                           ;                         ;                  ; defaultTopValuesProvider; true                   ; 80           ;                      ;true                            ;40                  ;                   ;                                  ;                      ;                              ;                                                ;true                           ;20                 ;                           ;                       ;                                    ;
 

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 21-Mar-2023, 2:57:46 pm                     ---
+ * --- Generated at 27-Mar-2023, 12:45:35 pm                    ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -43,6 +43,7 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 		final Map<String, Map<String, AttributeMode>> ttmp = new HashMap();
 		Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
 		tmp.put("companyName", AttributeMode.INITIAL);
+		tmp.put("pitPrice", AttributeMode.INITIAL);
 		ttmp.put("de.hybris.platform.jalo.product.Product", Collections.unmodifiableMap(tmp));
 		DEFAULT_INITIAL_ATTRIBUTES = ttmp;
 	}
@@ -358,6 +359,79 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public String getName()
 	{
 		return TrainingCoreConstants.EXTENSIONNAME;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.pitPrice</code> attribute.
+	 * @return the pitPrice - PITS Price of the Product
+	 */
+	public Double getPitPrice(final SessionContext ctx, final Product item)
+	{
+		return (Double)item.getProperty( ctx, TrainingCoreConstants.Attributes.Product.PITPRICE);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.pitPrice</code> attribute.
+	 * @return the pitPrice - PITS Price of the Product
+	 */
+	public Double getPitPrice(final Product item)
+	{
+		return getPitPrice( getSession().getSessionContext(), item );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.pitPrice</code> attribute. 
+	 * @return the pitPrice - PITS Price of the Product
+	 */
+	public double getPitPriceAsPrimitive(final SessionContext ctx, final Product item)
+	{
+		Double value = getPitPrice( ctx,item );
+		return value != null ? value.doubleValue() : 0.0d;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.pitPrice</code> attribute. 
+	 * @return the pitPrice - PITS Price of the Product
+	 */
+	public double getPitPriceAsPrimitive(final Product item)
+	{
+		return getPitPriceAsPrimitive( getSession().getSessionContext(), item );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.pitPrice</code> attribute. 
+	 * @param value the pitPrice - PITS Price of the Product
+	 */
+	public void setPitPrice(final SessionContext ctx, final Product item, final Double value)
+	{
+		item.setProperty(ctx, TrainingCoreConstants.Attributes.Product.PITPRICE,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.pitPrice</code> attribute. 
+	 * @param value the pitPrice - PITS Price of the Product
+	 */
+	public void setPitPrice(final Product item, final Double value)
+	{
+		setPitPrice( getSession().getSessionContext(), item, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.pitPrice</code> attribute. 
+	 * @param value the pitPrice - PITS Price of the Product
+	 */
+	public void setPitPrice(final SessionContext ctx, final Product item, final double value)
+	{
+		setPitPrice( ctx, item, Double.valueOf( value ) );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.pitPrice</code> attribute. 
+	 * @param value the pitPrice - PITS Price of the Product
+	 */
+	public void setPitPrice(final Product item, final double value)
+	{
+		setPitPrice( getSession().getSessionContext(), item, value );
 	}
 	
 }
