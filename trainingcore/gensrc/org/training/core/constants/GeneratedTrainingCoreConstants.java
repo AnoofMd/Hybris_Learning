@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 27-Mar-2023, 12:45:35 pm                    ---
+ * --- Generated at 10-Apr-2023, 2:18:16 pm                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.constants;
@@ -26,7 +26,9 @@ public class GeneratedTrainingCoreConstants
 		public static final String PITADDRESS = "PITAddress".intern();
 		public static final String PITUSER = "PITUser".intern();
 		public static final String PITUSEREMAILPROCESS = "PitUserEmailProcess".intern();
+		public static final String SERVICEPROVIDER = "ServiceProvider".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();
+		public static final String VEHICLE = "Vehicle".intern();
 	}
 	public static class Attributes
 	{
@@ -34,6 +36,7 @@ public class GeneratedTrainingCoreConstants
 		{
 			public static final String COMPANYNAME = "companyName".intern();
 			public static final String PITPRICE = "pitPrice".intern();
+			public static final String SUBHEADLINE = "subHeadline".intern();
 		}
 	}
 	public static class Enumerations
@@ -57,6 +60,7 @@ public class GeneratedTrainingCoreConstants
 	public static class Relations
 	{
 		public static final String USER2ADDRESS = "User2Address".intern();
+		public static final String VEHICLETOUSER = "VehicleToUser".intern();
 	}
 	
 	protected GeneratedTrainingCoreConstants()

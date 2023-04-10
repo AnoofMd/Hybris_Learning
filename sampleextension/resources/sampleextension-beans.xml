@@ -191,10 +191,9 @@
 		<property name="user_since" type="Integer"/>
 
 	</bean>
-
-	<!-- <bean class="de.hybris.platform.commercewebservicescommons.dto.hybrisTubeStores.HybrisTubeStoresDataListWSDTO">
-    <property name="hybrisTubeStores" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.hybrisTubeStores.HybrisTubeStoresDataWSDTO"></property>
-    </bean> -->
+	<bean class="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO">
+		<property name="subHeadline" type="String"/>
+	</bean>
 
 	<bean class="org.training.facades.product.data.PITUserDataListWSDTO">
 		<property name="pitUser"

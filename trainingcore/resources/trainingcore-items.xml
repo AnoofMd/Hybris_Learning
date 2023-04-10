@@ -37,6 +37,15 @@
                 <modifiers read="true" write="true" partof="true" optional="true"/>
             </targetElement>
         </relation>
+        <relation code="VehicleToUser" localized="false" autocreate="true">
+            <deployment table="VehicleToUser" typecode="32006" />
+            <sourceElement type="Vehicle" qualifier="vehicle" cardinality="many">
+                <modifiers read="true" write="true" initial="true" optional="false"/>
+            </sourceElement>
+            <targetElement type="ServiceProvider" qualifier="serviceProvider" cardinality="many">
+                <modifiers read="true" write="true" partof="true" optional="true"/>
+            </targetElement>
+        </relation>
     </relations>
 
     <itemtypes>
@@ -189,12 +198,22 @@
 
         <typegroup name="Product">
             <itemtype code="Product" autocreate="false" generate="false">
-                <description>Extends existing type with additional attribute Company Name.</description>
+                <description>Extends existing type with additional attribute Company Name, PIT Price, SUB HeadLine.</description>
                 <attributes>
                     <attribute qualifier="companyName" type="java.lang.String">
                         <persistence type="property"/>
                         <modifiers read="true" write="true" search="true" optional="true" unique="false"/>
                         <description>company Name of the Product</description>
+                    </attribute>
+                    <attribute qualifier="pitPrice" type="java.lang.Double">
+                        <persistence type="property"/>
+                        <modifiers read="true" write="true" search="true" optional="true" unique="false"/>
+                        <description>PITS Price of the Product</description>
+                    </attribute>
+                    <attribute qualifier="subHeadline" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                        <modifiers read="true" write="true" search="true" optional="true"/>
+                        <description>Sub Headline of the Product</description>
                     </attribute>
                 </attributes>
             </itemtype>
@@ -237,17 +256,33 @@
                 </attributes>
             </itemtype>
         </typegroup>
-        <typegroup name="Product">
-            <itemtype code="Product" autocreate="false" generate="false">
-                <description>Extends existing type with additional attribute pitPrice.</description>
+        <typegroup name="Vehicle">
+            <itemtype code="Vehicle" autocreate="true" generate="true" extends="Product">
+                <description>New Type Vehicle.</description>
                 <attributes>
-                    <attribute qualifier="pitPrice" type="java.lang.Double">
+                    <attribute qualifier="vin" type="java.lang.String">
+                        <modifiers read="true" search="true" write="true" optional="true"/>
                         <persistence type="property"/>
-                        <modifiers read="true" write="true" search="true" optional="true" unique="false"/>
-                        <description>PITS Price of the Product</description>
                     </attribute>
                 </attributes>
             </itemtype>
+            <itemtype code="ServiceProvider" autocreate="true" generate="true">
+                <description> Service Provider..</description>
+                <deployment table="ServiceProvider" typecode="32454"/>
+                <attributes>
+                    <attribute qualifier="code" type="java.lang.String">
+                        <modifiers read="true" write="true" search="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="name" type="localized:java.lang.String">
+                        <modifiers read="true" write="true" search="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
+        <typegroup name="Product">
+
         </typegroup>
     </itemtypes>
 </items>

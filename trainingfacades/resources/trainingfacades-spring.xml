@@ -228,6 +228,11 @@
         </property>
     </bean>
 
+    <alias name="trainingProductPopulator" alias="productPopulator"/>
+    <bean id="trainingProductPopulator" parent="defaultProductPopulator" class="org.training.facades.populators.TrainingProductPopulator">
+    </bean>
+
+
     <bean id="pitUserPopulator" class="org.training.facades.populators.PITUserPopulator">
     </bean>
 
