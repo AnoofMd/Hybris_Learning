@@ -133,6 +133,14 @@
                       autocreate="true">
             </itemtype>
         </typegroup>
+        <typegroup>
+            <itemtype generate="true"
+                      code="PitUserCronJob"
+                      jaloclass="org.training.core.jalo.PitUserCronJob"
+                      extends="CronJob"
+                      autocreate="true">
+            </itemtype>
+        </typegroup>
 
         <typegroup name="PITS">
             <itemtype code="PITUser" autocreate="true" generate="true">

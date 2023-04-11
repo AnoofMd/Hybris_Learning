@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 10-Apr-2023, 2:18:16 pm                     ---
+ * --- Generated at 11-Apr-2023, 12:50:57 pm                    ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -34,6 +34,7 @@ import org.training.core.jalo.ElectronicsColorVariantProduct;
 import org.training.core.jalo.HelloWorldCronJob;
 import org.training.core.jalo.PITAddress;
 import org.training.core.jalo.PITUser;
+import org.training.core.jalo.PitUserCronJob;
 import org.training.core.jalo.ServiceProvider;
 import org.training.core.jalo.Vehicle;
 
@@ -334,6 +335,32 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public PITUser createPITUser(final Map attributeValues)
 	{
 		return createPITUser( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public PitUserCronJob createPitUserCronJob(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.PITUSERCRONJOB );
+			return (PitUserCronJob)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating PitUserCronJob : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public PitUserCronJob createPitUserCronJob(final Map attributeValues)
+	{
+		return createPitUserCronJob( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public PitUserEmailProcess createPitUserEmailProcess(final SessionContext ctx, final Map attributeValues)

@@ -140,3 +140,31 @@ INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; n
 INSERT_UPDATE SolrSearchQueryProperty; $indexedProperty[unique = true]; priority; facet[default = true]; facetType(code)[default = 'MultiSelectOr']; facetDisplayNameProvider; facetSortProvider; facetTopValuesProvider; ftsQuery[default = false]; ftsQueryBoost; ftsQueryMinTermLength; ftsPhraseQuery[default = false]; ftsPhraseQueryBoost; ftsPhraseQuerySlop; ftsWildcardQuery[default = false]; ftsWildcardQueryBoost; ftsWildcardQueryMinTermLength; ftsWildcardQueryType(code)[default = 'POSTFIX']; ftsFuzzyQuery[default = false]; ftsFuzzyQueryBoost; ftsFuzzyQueryMinTermLength; ftsFuzzyQueryFuzziness; useForHighlighting[default = false]; includeInResponse[default = true]; $searchQueryTemplate
                                      ; companyName                        ; 100    ;                      ;                                           ;                         ;                  ; defaultTopValuesProvider; true                   ; 80           ;                      ;true                            ;40                  ;                   ;                                  ;                      ;                              ;                                                ;true                           ;20                 ;                           ;                       ;                                    ;
 
+
+##---------------------------------------------------------------CronJob & Trigger----------------------------------------------------------------------------------------
+
+INSERT_UPDATE PitUserCronJob; code[unique=true];job(code);singleExecutable;sessionLanguage(isocode)
+                            ;trainingJobPerformableCronJob;trainingJobPerformable;false;en
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];active;cronExpression
+#every 5 minutes
+                     ;trainingJobPerformableCronJob;true;* /5 * * * ?
+
+##---------------------------------------------------------------Composite CronJob----------------------------------------------------------------------------------------
+
+
+INSERT_UPDATE CronJob; code[unique=true];job(code);singleExecutable;sessionLanguage(isocode)
+                     ;printWelcomeCronJob;firstJobPerformable;false;en
+                     ;printDateAndTimeCronJob;printDateAndTimeJobPerformable;false;en
+                     ;printThanksCronJob;lastJobPerformable;false;en
+
+
+INSERT_UPDATE CompositeEntry;code[unique=true];executableCronJob(code)
+                            ;printWelcomeCronJob;printWelcomeCronJob
+                            ;printDateAndTimeCronJob;printDateAndTimeCronJob
+                            ;printThanksCronJob;printThanksCronJob
+
+
+
+INSERT_UPDATE CompositeCronJob;code[unique=true];job(code);compositeentries(code);sessionLanguage(isocode)
+                              ;printDateAndTimeCompositeCronJob;compositeJobPerformable;printWelcomeCronJob,printDateAndTimeCronJob,printThanksCronJob;en

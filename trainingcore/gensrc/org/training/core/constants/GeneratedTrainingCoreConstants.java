@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 10-Apr-2023, 2:18:16 pm                     ---
+ * --- Generated at 11-Apr-2023, 12:50:57 pm                    ---
  * ----------------------------------------------------------------
  */
 package org.training.core.constants;
@@ -25,6 +25,7 @@ public class GeneratedTrainingCoreConstants
 		public static final String HYBRISTUBEEMAILPROCESS = "HybrisTubeEmailProcess".intern();
 		public static final String PITADDRESS = "PITAddress".intern();
 		public static final String PITUSER = "PITUser".intern();
+		public static final String PITUSERCRONJOB = "PitUserCronJob".intern();
 		public static final String PITUSEREMAILPROCESS = "PitUserEmailProcess".intern();
 		public static final String SERVICEPROVIDER = "ServiceProvider".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();

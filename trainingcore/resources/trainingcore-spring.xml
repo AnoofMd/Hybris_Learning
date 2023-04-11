@@ -538,6 +538,10 @@
 		<property name="itemCleanupHooks" ref="csTicketRetentionHooks"/>
 		<property name="ticketBusinessService" ref="ticketBusinessService"/>
 	</bean>
+	<bean id="trainingJobPerformable" class="org.training.core.job.TrainingJobPerformable"
+		  parent="abstractJobPerformable">
+	<property name="pitUserService" ref="pitUserService"/>
+	</bean>
 	<bean id="myJobPerformable" class="org.training.core.job.MyJobPerformable"
 		  parent="abstractJobPerformable"/>
 	<alias alias="pitUserDao" name="pitUserDaoImpl"/>
