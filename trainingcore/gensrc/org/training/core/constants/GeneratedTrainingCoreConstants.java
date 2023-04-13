@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 11-Apr-2023, 12:50:57 pm                    ---
+ * --- Generated at 13-Apr-2023, 3:28:09 am                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.constants;
@@ -28,6 +28,7 @@ public class GeneratedTrainingCoreConstants
 		public static final String PITUSERCRONJOB = "PitUserCronJob".intern();
 		public static final String PITUSEREMAILPROCESS = "PitUserEmailProcess".intern();
 		public static final String SERVICEPROVIDER = "ServiceProvider".intern();
+		public static final String SKILLLEVELENUM = "SkillLevelEnum".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();
 		public static final String VEHICLE = "Vehicle".intern();
 	}
@@ -42,6 +43,12 @@ public class GeneratedTrainingCoreConstants
 	}
 	public static class Enumerations
 	{
+		public static class SkillLevelEnum
+		{
+			public static final String BEGINNER = "BEGINNER".intern();
+			public static final String INTERMEDIATE = "INTERMEDIATE".intern();
+			public static final String PRO = "PRO".intern();
+		}
 		public static class SwatchColorEnum
 		{
 			public static final String BLACK = "BLACK".intern();

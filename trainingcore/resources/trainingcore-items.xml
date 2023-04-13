@@ -25,6 +25,11 @@
             <value code="WHITE"/>
             <value code="YELLOW"/>
         </enumtype>
+        <enumtype generate="true" code="SkillLevelEnum" autocreate="true">
+            <value code="BEGINNER"/>
+            <value code="INTERMEDIATE"/>
+            <value code="PRO"/>
+        </enumtype>
     </enumtypes>
 
     <relations>
@@ -166,6 +171,11 @@
                         <modifiers write="false"/>
                         <persistence type="dynamic" attributeHandler="pitUserAge"/>
                         <description>Dynamic attribute for customer site age</description>
+                    </attribute>
+                    <attribute qualifier="skillLevel" type="SkillLevelEnum">
+                        <persistence type="property"/>
+                        <modifiers read="true" write="true" search="true" optional="true"/>
+                        <description>Skill Level of PIT User</description>
                     </attribute>
                 </attributes>
             </itemtype>

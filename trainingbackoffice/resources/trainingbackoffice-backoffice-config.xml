@@ -23,6 +23,15 @@
 			</y:group>
 		</y:actions>
     </context>
+	<context merge-by="module" component="editorareaactions" type="Media">
+		<y:actions xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:group qualifier="common">
+				<y:label>actiongroup.common</y:label>
+				<y:action action-id="org.training.backoffice.actions.trainingmediaaction" property="currentObject" />
+			</y:group>
+		</y:actions>
+	</context>
+
 
 	<!-- Notification Area-->
 	<context component="notification-area">
@@ -32,7 +41,13 @@
 	        </na:notifications>
 	   </na:notification-area>
 	</context>
-
+	<context component="explorer-tree" module="trainingbackoffice" merge-by="module">
+		<n:explorer-tree xmlns:n="http://www.hybris.com/cockpitng/config/explorertree">
+			<n:navigation-node id="hmc_treenode_user">
+				<n:type-node code="PITUser" id="PITUser"/>
+			</n:navigation-node>
+		</n:explorer-tree>
+	</context>
 	<context component="explorer-tree" module="trainingbackoffice" merge-by="module">
 		<n:explorer-tree xmlns:n="http://www.hybris.com/cockpitng/config/explorertree">
 			<n:navigation-node id="PITS">
@@ -56,6 +71,8 @@
 					<editorArea:attribute qualifier="id" />
 					<editorArea:attribute qualifier="name" />
 					<editorArea:attribute qualifier="job_title" />
+					<editorArea:attribute qualifier="address" />
+					<editorArea:attribute qualifier="skillLevel" />
 				</editorArea:section>
 			</editorArea:tab>
 		</editorArea:editorArea>
@@ -171,6 +188,18 @@
 		<lv:list-view>
 			<lv:column qualifier="companyName" sortable="false"/>
 		</lv:list-view>
+	</context>
+	<context merge-by="type"  type="Product" component="editor-area">
+		<editorArea:editorArea>
+			<editorArea:tab name="hmc.tab.product.properties"
+							position="1">
+				<editorArea:section name="hmc.trainingSection">
+					<editorArea:attribute qualifier="companyName" />
+					<editorArea:attribute qualifier="pitPrice" />
+					<editorArea:attribute qualifier="subHeadline" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
 	</context>
 
 </config>

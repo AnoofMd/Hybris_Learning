@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 11-Apr-2023, 12:50:57 pm                    ---
+ * --- Generated at 13-Apr-2023, 3:28:09 am                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -9,6 +9,7 @@ package org.training.core.jalo;
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.SessionContext;
+import de.hybris.platform.jalo.enumeration.EnumerationValue;
 import de.hybris.platform.jalo.type.CollectionType;
 import de.hybris.platform.util.OneToManyHandler;
 import java.util.Collection;
@@ -30,6 +31,8 @@ public abstract class GeneratedPITUser extends GenericItem
 	public static final String NAME = "name";
 	/** Qualifier of the <code>PITUser.job_title</code> attribute **/
 	public static final String JOB_TITLE = "job_title";
+	/** Qualifier of the <code>PITUser.skillLevel</code> attribute **/
+	public static final String SKILLLEVEL = "skillLevel";
 	/** Qualifier of the <code>PITUser.address</code> attribute **/
 	public static final String ADDRESS = "address";
 	/**
@@ -51,6 +54,7 @@ public abstract class GeneratedPITUser extends GenericItem
 		tmp.put(ID, AttributeMode.INITIAL);
 		tmp.put(NAME, AttributeMode.INITIAL);
 		tmp.put(JOB_TITLE, AttributeMode.INITIAL);
+		tmp.put(SKILLLEVEL, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -274,6 +278,42 @@ public abstract class GeneratedPITUser extends GenericItem
 	public void setName(final String value)
 	{
 		setName( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>PITUser.skillLevel</code> attribute.
+	 * @return the skillLevel - Skill Level of PIT User
+	 */
+	public EnumerationValue getSkillLevel(final SessionContext ctx)
+	{
+		return (EnumerationValue)getProperty( ctx, SKILLLEVEL);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>PITUser.skillLevel</code> attribute.
+	 * @return the skillLevel - Skill Level of PIT User
+	 */
+	public EnumerationValue getSkillLevel()
+	{
+		return getSkillLevel( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>PITUser.skillLevel</code> attribute. 
+	 * @param value the skillLevel - Skill Level of PIT User
+	 */
+	public void setSkillLevel(final SessionContext ctx, final EnumerationValue value)
+	{
+		setProperty(ctx, SKILLLEVEL,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>PITUser.skillLevel</code> attribute. 
+	 * @param value the skillLevel - Skill Level of PIT User
+	 */
+	public void setSkillLevel(final EnumerationValue value)
+	{
+		setSkillLevel( getSession().getSessionContext(), value );
 	}
 	
 }
