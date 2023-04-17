@@ -168,3 +168,45 @@ INSERT_UPDATE CompositeEntry;code[unique=true];executableCronJob(code)
 
 INSERT_UPDATE CompositeCronJob;code[unique=true];job(code);compositeentries(code);sessionLanguage(isocode)
                               ;printDateAndTimeCompositeCronJob;compositeJobPerformable;printWelcomeCronJob,printDateAndTimeCronJob,printThanksCronJob;en
+
+
+#------------------------------------------------------Task----------------------------------------------------------
+
+INSERT_UPDATE UserGroup ; UID[unique=true]   ; groups(uid)[mode=append] ; description                       ; name
+                        ; storemanagergroup ; employeegroup            ; Store Manager Group     ; StoreManager
+$defaultPassword=1234
+INSERT_UPDATE Employee;name;password[default=$defaultPassword];uid[unique=true];groups(uid)[mode=append]
+                      ;Jacob;;jacobtestuser;storemanagergroup
+$START_USERRIGHTS
+Type;UID;MemberOfGroups;Password;Target;read;change;create;delete;change_perm
+UserGroup;storemanagergroup;employeegroup;;;;;Order;+;+;+;+;+
+$END_USERRIGHTS
+INSERT_UPDATE BackofficeRole; UID[unique = true]          ; groups(uid)[mode = append]  ; locName[lang = en]                       ; name                          ; backOfficeLoginDisabled; authorities
+                            ; StoreManagerRole ; storemanagergroup; Store Manager Role ;Store Manager Role ; FALSE
+
+
+INSERT_UPDATE UserGroup ; UID[unique=true]   ; groups(uid)[mode=append] ; description                       ; name
+                        ; productmanagergroup ; employeegroup            ; Product Manager Group     ; ProductManager
+$defaultPassword=1234
+INSERT_UPDATE Employee;name;password[default=$defaultPassword];uid[unique=true];groups(uid)[mode=append]
+                      ;John;;johntestuser;productmanagergroup
+INSERT_UPDATE BackofficeRole; UID[unique = true]          ; groups(uid)[mode = append]  ; locName[lang = en]                       ; name                          ; backOfficeLoginDisabled; authorities
+                            ; ProductManagerRole ; productmanagergroup; Product Manager Role ;Product Manager Role ; FALSE
+
+
+$START_USERRIGHTS; ; ; ; ; ; ; ; ;
+Type      ; UID                              ; MemberOfGroups ; Password ; Target                         ; read ; change ; create ; remove ; change_perm
+UserGroup ; StoreManagerRole                 ;                ;          ;                                ;      ;        ;        ;        ;
+          ;                                  ;                ;          ; User                           ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; UserGroup                      ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; Cart                           ; +    ; -      ; -      ; -      ; -
+          ;                                  ;                ;          ; Order                          ; +    ; -      ; -      ; -      ; -
+          ;                                  ;                ;          ; Address                        ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; Title                          ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; Agreement                      ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; OrderEntry                     ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; Quote                          ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; QuoteEntry                     ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; Product                        ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; Media                          ; +    ; +      ; +      ; +      ; +
+$END_USERRIGHTS; ; ; ; ; ; ; ; ;

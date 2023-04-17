@@ -8,12 +8,15 @@
 		xmlns:advanced-search="http://www.hybris.com/cockpitng/config/advancedsearch"
 		xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms"
 		xmlns:dsb="http://www.hybris.com/cockpitng/config/dashboard"
-		xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree"
+		xmlns:et="http://www.hybris.com/cockpitng/config/explorertree"
 		xmlns:grid-view="http://www.hybris.com/cockpitng/component/gridView"
 		xmlns:na="http://www.hybris.com/cockpitng/config/notifications"
 		xmlns:simple-search="http://www.hybris.com/cockpitng/config/simplesearch"
 		xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
-		xmlns:y="http://www.hybris.com/cockpit/config/hybris" xmlns:lv="http://www.hybris.com/cockpitng/component/listView">
+		xmlns:y="http://www.hybris.com/cockpit/config/hybris"
+		xmlns:lv="http://www.hybris.com/cockpitng/component/listView"
+		xmlns:b="http://www.hybris.com/cockpitng/config/perspectiveChooser"
+		xmlns:a="http://www.hybris.com/cockpitng/config/viewSwitcher">
 
 	<context merge-by="module" component="editorareaactions" type="Consignment">
 		<y:actions xmlns:y="http://www.hybris.com/cockpit/config/hybris">
@@ -200,6 +203,43 @@
 				</editorArea:section>
 			</editorArea:tab>
 		</editorArea:editorArea>
+	</context>
+
+	<context principal="StoreManagerRole" component="explorer-tree" merge-mode="none">
+		<et:explorer-tree>
+			<et:navigation-node id="hmc_treenode_user">
+				<et:type-node code="company" id="hmc_typenode_company"/>
+				<et:type-node code="UserGroup" id="hmc_typenode_usergroup"/>
+				<et:type-node code="Employee" id="hmc_typenode_employee"/>
+				<et:type-node code="Customer" id="hmc_typenode_customer"/>
+				<et:type-node code="Address" id="hmc_typenode_address"/>
+				<et:type-node code="Title" id="hmc_typenode_title"/>
+				<et:type-node code="agreement" id="hmc_typenode_agreement"/>
+			</et:navigation-node>
+			<et:navigation-node id="hmc_treenode_order">
+				<et:type-node code="Order" id="hmc_typenode_order"/>
+				<et:type-node code="OrderEntry" id="hmc_typenode_orderentry"/>
+				<et:type-node code="Quote" id="hmc_typenode_quote"/>
+				<et:type-node code="QuoteEntry" id="hmc_typenode_quoteentry"/>
+			</et:navigation-node>
+			<et:navigation-node id="Carts">
+				<et:type-node code="Cart" id="hmc_typenode_cart"/>
+			</et:navigation-node>
+		</et:explorer-tree>
+	</context>
+	<!--<context component="perspective-view-switcher" principal="ProductManagerRole">
+		<y:view-switcher xmlns:y="http://www.hybris.com/cockpitng/config/viewSwitcher">
+			<y:authority name="productmanager">
+				<y:view id="pcmbackoffice"/>
+			</y:authority>
+		</y:view-switcher>
+	</context>-->
+	<context component="perspective-chooser" principal="ProductManagerRole">
+		<b:perspective-chooser>
+			<b:authority name="productmanager">
+				<b:perspective id="pcmbackoffice"/>
+			</b:authority>
+		</b:perspective-chooser>
 	</context>
 
 </config>

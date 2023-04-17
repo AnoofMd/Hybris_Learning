@@ -18,6 +18,5 @@ public class TrainingMediaAction extends AbstractComponentWidgetAdapterAware imp
         finalUrl="https://localhost:9002/"+urlForMedia;
         Messagebox.show(finalUrl, title, 1, icon);
         return new ActionResult<Object>("success", finalUrl);
-
     }
 }
