@@ -171,9 +171,10 @@ INSERT_UPDATE CompositeCronJob;code[unique=true];job(code);compositeentries(code
 
 
 #------------------------------------------------------Task----------------------------------------------------------
-
-INSERT_UPDATE UserGroup ; UID[unique=true]   ; groups(uid)[mode=append] ; description                       ; name
-                        ; storemanagergroup ; employeegroup            ; Store Manager Group     ; StoreManager
+$writableCatalogVersions=writableCatalogVersions(catalog(id),version);
+$readableCatalogVersions=readableCatalogVersions(catalog(id),version);
+INSERT_UPDATE UserGroup ; UID[unique=true]   ; groups(uid)[mode=append]   ; description             ; name          ;$readableCatalogVersions                                                                                                      ;readableLanguages(isocode);writeableLanguages(isocode);$writableCatalogVersions
+                        ; storemanagergroup ; employeegroup  ; Store Manager Group     ; StoreManager  ;electronicsProductCatalog:Staged, electronicsProductCatalog:Online, apparelProductCatalog:Staged, apparelProductCatalog:Online, electronicsContentCatalog:Online;en;en;electronicsProductCatalog:Staged, apparelProductCatalog:Staged
 $defaultPassword=1234
 INSERT_UPDATE Employee;name;password[default=$defaultPassword];uid[unique=true];groups(uid)[mode=append]
                       ;Jacob;;jacobtestuser;storemanagergroup
@@ -261,3 +262,34 @@ UserGroup ; ProductManagerRole               ;                ;          ;      
           ;                                  ;                ;          ; ClassificationClass    ; +    ;       ;       ;       ;
           ;                                  ;                ;          ; ClassAttributeAssignment    ; +    ;       ;       ;       ;
 $END_USERRIGHTS; ; ; ; ; ; ; ; ;
+
+
+#-----------------------------------------------------Keyword Redirect-------------------------------------------------
+
+$facetSearchConfigName=electronicsIndex
+$contentCatalogName=electronicsContentCatalog
+
+INSERT_UPDATE SolrFacetSearchKeywordRedirect;facetSearchConfig(name)[unique=true,default=$facetSearchConfigName];language(isocode)[unique=true,default=$lang];keyword[unique=true];matchType(code)[unique=true];redirect(&redirectRefID);ignoreCase[default=true]
+                                            ;;;"trainingPage";EXACT;$contentCatalogName-redirectRefID-trainingPage;
+
+$START_USERRIGHTS; ; ; ; ; ; ; ; ;
+Type      ; UID                              ; MemberOfGroups ; Password ; Target                         ; read ; change ; create ; remove ; change_perm
+UserGroup ; StoreManagerRole                 ;                ;          ;                                ;      ;        ;        ;        ;
+          ;                                  ;                ;          ; SolrFacetSearchConfig          ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrIndexerCronJob             ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrServerConfig               ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrIndexConfig                ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrIndexedType                ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrIndexedProperty            ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrFacetSearchKeywordRedirect ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrAbstractKeywordRedirect    ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrCategoryRedirect           ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrProductRedirect            ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrURIRedirect                ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrIndexerOperationWizard     ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrIndexerHotUpdateWizard     ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrExtIndexerCronJob          ; +    ; +      ; +      ; +      ; +
+          ;                                  ;                ;          ; SolrIndexerQuery               ; +    ; +      ; +      ; +      ; +
+
+$END_USERRIGHTS; ; ; ; ; ; ; ; ;
+

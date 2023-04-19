@@ -225,6 +225,12 @@
 			<et:navigation-node id="Carts">
 				<et:type-node code="Cart" id="hmc_typenode_cart"/>
 			</et:navigation-node>
+			<et:navigation-node id="hmc.solrfacetsearch">
+				<et:navigation-node id="hmc.legacysolrfacetsearch">
+					<et:type-node code="SolrFacetSearchConfig" id="hmc_type_tree_solrfacetsearchconfig" />
+					<et:type-node code="SolrIndexedType" id="hmc_type_tree_solrindexedtype" />
+				</et:navigation-node>
+			</et:navigation-node>
 		</et:explorer-tree>
 	</context>
 	<!--<context component="perspective-view-switcher" principal="ProductManagerRole">
